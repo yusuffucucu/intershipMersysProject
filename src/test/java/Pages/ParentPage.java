@@ -15,26 +15,26 @@ public class ParentPage {
     public void mySendKeys(WebElement element, String elementName)
     {
 wait.until(ExpectedConditions.visibilityOf(element));
+scrolltoElement(element);
 element.clear();
 element.sendKeys(elementName);
-scrollToElement(element);
+
 
 
     }
 public void myClick(WebElement element)
 {
     wait.until(ExpectedConditions.elementToBeClickable(element));
-    scrollToElement(element);
+    scrolltoElement(element);
     element.click();
 
 
 }
-public void scrollToElement(WebElement element)
-{
-    JavascriptExecutor js= (JavascriptExecutor)GWD.getDriver();
-    js.executeScript("arguments[0].scrollIntoView");
+    public void scrolltoElement(WebElement element) {
+        JavascriptExecutor js=(JavascriptExecutor) GWD.getDriver();
+        js.executeScript("arguments[0].scrollIntoView();", element);
 
-} // elementi assert etmek icin metod
+    } // elementi assert etmek icin metod
 public void verifyContainText(WebElement element,String value)
 {
     wait.until(ExpectedConditions.textToBePresentInElement(element,value));

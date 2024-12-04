@@ -9,8 +9,7 @@ public class DetailsPage extends ParentPage {
     public DetailsPage() {
         PageFactory.initElements(GWD.getDriver(), this);
     }
-    @FindBy (css = "")
-    public WebElement userName;
+
 
 
 
