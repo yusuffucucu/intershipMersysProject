@@ -1,6 +1,7 @@
 package Pages;
 
 import Utilities.GWD;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -38,8 +39,16 @@ public void myClick(WebElement element)
 public void verifyContainText(WebElement element,String value)
 {
     wait.until(ExpectedConditions.textToBePresentInElement(element,value));
-    Assert.assertTrue(element.getText().toLowerCase().equals(value.toLowerCase()));
+    Assert.assertTrue(element.getText().toLowerCase().contains(value.toLowerCase()));
 }
+    public void verifyMessageContainsText(String value){
+        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath("//hot-toast-container/div/div/div//*"),0));
+        WebElement MesajKutusuParent2=GWD.getDriver().findElement(By.tagName("mat-panel-description"));  //mat-expansion-panel-header
+        Assert.assertTrue( MesajKutusuParent2.getAttribute("innerHTML").toLowerCase().contains(value.toLowerCase()));
+
+    }
 
 
 }
+
+
